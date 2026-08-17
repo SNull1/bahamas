@@ -29,19 +29,42 @@
             scrollbar-width: none;
         }
 
+        /* Conteneur principal avec image de fond */
         .mobile-container {
             width: 100%;
             max-width: 480px;
-            background-color: #1a1a1a;
+            background-image: url('image.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             min-height: 100vh;
             box-shadow: 0 0 20px rgba(0,0,0,0.8);
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Voile sombre semi-transparent par-dessus l'image pour garder le texte bien lisible */
+        .mobile-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 26, 26, 0.85); /* Ajuste l'opacité ici si besoin (0.85) */
+            z-index: 1;
+        }
+
+        /* S'assurer que le contenu passe bien par-dessus le voile sombre */
+        header, .quick-nav, .tab-content, footer {
+            position: relative;
+            z-index: 2;
         }
 
         header {
-            background: #000;
+            background: rgba(0, 0, 0, 0.9);
             padding: 20px;
             text-align: center;
             border-bottom: 2px solid #ff69b4;
@@ -64,12 +87,12 @@
         .quick-nav {
             display: flex;
             justify-content: space-around;
-            background: #222;
+            background: rgba(34, 34, 34, 0.9);
             padding: 10px 0;
             border-bottom: 1px solid #333;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 10;
         }
 
         .quick-nav button {
@@ -138,13 +161,13 @@
 
         .desc {
             font-size: 0.75rem;
-            color: #888;
+            color: #aaa;
             margin-bottom: 5px;
         }
 
         .item-row {
             margin-bottom: 12px;
-            border-bottom: 1px dashed #333;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
             padding-bottom: 8px;
         }
 
@@ -164,7 +187,7 @@
 
         /* Contacts Patrons */
         .boss-card {
-            background: #252525;
+            background: rgba(37, 37, 37, 0.8);
             padding: 12px 15px;
             border-radius: 8px;
             margin-bottom: 10px;
@@ -198,7 +221,7 @@
         footer {
             text-align: center;
             padding: 15px;
-            background: #000;
+            background: rgba(0, 0, 0, 0.9);
             font-size: 0.75rem;
             color: #666;
             margin-top: auto;
@@ -386,22 +409,22 @@
 
         <!-- Section Contacts / Patrons -->
         <div id="contact" class="tab-content">
-            <h2>Direction</h2>
+            <h2>Direction / Patrons</h2>
             
             <div class="boss-card">
                 <div class="boss-info">
-                    <h4>Owen Gomez</h4>
-                    <p>PATRON</p>
+                    <h4>Marc "The Boss"</h4>
+                    <p>Gérant Principal</p>
                 </div>
-                <span class="phone-display">520-101-3231</span>
+                <span class="phone-display">555-123-456</span>
             </div>
 
             <div class="boss-card">
                 <div class="boss-info">
-                    <h4>Carole Denver</h4>
-                    <p>CO-PATRON</p>
+                    <h4>Sarah</h4>
+                    <p>Co-Fondatrice</p>
                 </div>
-                <span class="phone-display">907-236-5622</span>
+                <span class="phone-display">555-987-654</span>
             </div>
         </div>
 
